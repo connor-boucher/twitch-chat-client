@@ -1,8 +1,9 @@
 import { useLocation } from 'solid-app-router';
 import { Component, For } from 'solid-js';
 import { compact } from 'lodash';
-import { ChatOutput } from '../../components/ChatOutput';
 import { Client } from 'tmi.js';
+
+import { ChatOutput } from '@components/ChatOutput';
 
 const getChannels = (path: string) => compact(path.split('/'));
 
