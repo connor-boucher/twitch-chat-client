@@ -12,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/lodash": "^4.14.182",
+    "@types/tmi.js": "^1.8.1",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "commitizen": "^4.2.4",
@@ -24,7 +25,8 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "solid-app-router": "^0.3.3",
-    "solid-js": "^1.4.2"
+    "solid-js": "^1.4.2",
+    "tmi.js": "^1.8.5"
   },
   "config": {
     "commitizen": {

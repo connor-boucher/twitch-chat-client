@@ -1,17 +1,25 @@
 import { useLocation } from 'solid-app-router';
-import { Component } from 'solid-js';
+import { Component, For } from 'solid-js';
 import { compact } from 'lodash';
+import { ChatOutput } from '../../components/ChatOutput';
+import { Client } from 'tmi.js';
 
 const getChannels = (path: string) => compact(path.split('/'));
 
 const Chat: Component = () => {
     const location = useLocation();
     const channels = getChannels(location.pathname);
-    console.log(channels);
 
-    return <>
-        <h1>Channels: {channels.join(', ')}</h1>
-    </>;
+    const client = new Client({
+        channels,
+    });
+    client.connect();
+
+    return <div class='chat-frame'>
+        <For each={channels}>
+            {(channel) => <ChatOutput channel={channel} client={client} />}
+        </For>
+    </div>;
 };
 
 export default Chat;
