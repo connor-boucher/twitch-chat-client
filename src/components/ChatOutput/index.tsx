@@ -1,20 +1,13 @@
-import { Component, createSignal, For, Show } from 'solid-js';
-import { Client } from 'tmi.js';
+import { Accessor, Component, For, Show } from 'solid-js';
 
 import type { Message } from 'types';
 
 interface ChatOutputProps {
     channel: string;
-    client: Client;
+    messages: Accessor<Message[]>;
 }
 
-const ChatOutput: Component<ChatOutputProps> = ({ channel, client }) => {
-    const [messages, setMessages] = createSignal([] as Message[]);
-
-    client.on('message', (channel, userstate, message, self) => {
-        setMessages(messages => [...messages, { channel, userstate, message, self }]);
-    });
-
+const ChatOutput: Component<ChatOutputProps> = ({ channel, messages }) => {
     return <div class='chat-output-frame'>
         <h1>Channel: {channel}</h1>
         
