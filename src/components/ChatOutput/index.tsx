@@ -9,7 +9,7 @@ interface ChatOutputProps {
 }
 
 const handleMessage = (setter: Setter<Message[]>, maxHist = 250) => (channel: string, userstate: ChatUserstate, message: string, self: boolean) => {
-    setter((prev: Message[]) => [...takeRight(prev, maxHist - 1), { channel, userstate, message, self }]);
+    setter((prev: Message[]) => takeRight([...prev, { channel, userstate, message, self }], maxHist));
 };
 
 const ChatOutput: Component<ChatOutputProps> = ({ channel }) => {
