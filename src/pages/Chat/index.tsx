@@ -21,7 +21,6 @@ const Chat: Component = () => {
     const [messages, setMessages] = createSignal([] as Message[]);
     
     const client = new Client({ channels });
-
     client.on('message', handleMessage(setMessages));
     client.connect();
 
