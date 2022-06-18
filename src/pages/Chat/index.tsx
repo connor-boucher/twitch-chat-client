@@ -3,8 +3,7 @@ import { Accessor, Component, createSignal, Setter } from 'solid-js';
 import { compact } from 'lodash';
 import { ChatUserstate, Client } from 'tmi.js';
 
-import { ChatOutput } from '@components/ChatOutput';
-import { Tabs } from '@components/Tabs';
+import { ChatOutput, Tabs } from '@components/index';
 
 import type { Message, Tab } from 'types';
 
