@@ -1,4 +1,4 @@
-import { Component, createSignal, For, Index, Match, Switch } from 'solid-js';
+import { Component, createSignal, Index, Match, Switch } from 'solid-js';
 
 import type { Tab } from 'types';
 
