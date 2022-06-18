@@ -1,11 +1,12 @@
 import { useLocation } from 'solid-app-router';
-import { Component, createSignal, For } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 import { compact } from 'lodash';
 import { Client } from 'tmi.js';
 
 import { ChatOutput } from '@components/ChatOutput';
+import { Tabs } from '@components/Tabs';
 
-import type { Message } from 'types';
+import type { Message, Tab } from 'types';
 
 const getChannels = (path: string) => compact(path.split('/'));
 
@@ -23,10 +24,12 @@ const Chat: Component = () => {
         setMessages(messages => [...messages, { channel, userstate, message, self }]);
     });
 
+    const tabs = channels.map(channel => (
+        { name: channel, content: <ChatOutput channel={channel} messages={messages} /> }
+    )) as Tab[];
+
     return <div class='chat-frame'>
-        <For each={channels}>
-            {(channel) => <ChatOutput channel={channel} messages={messages} />}
-        </For>
+        <Tabs tabs={tabs} />
     </div>;
 };
 
